@@ -1,22 +1,23 @@
+version: '3.8'
 services:
-    laravel.test:
+    api-runtime:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.3
+            context: ./docker/api-runtime
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.3/app
+        healthcheck:
+            test: [ "CMD", "curl", "-f", "http://localhost:3750/api/health" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
             - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-            IGNITION_LOCAL_SITES_PATH: '${PWD}'
+        env_file:
+            - './.env'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -25,6 +26,68 @@ services:
             - pgsql
             - mailpit
             - redis
+            - php-fpm
+    graphql:
+        build:
+            context: apps/graphql/docker
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+                WWWUSER: '${WWWUSER}'
+        image: sail-8.3/app
+        healthcheck:
+            test: [ "CMD", "curl", "-f", "http://localhost:3751/api/health" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - '${GRAPHQL_PORT:-81}:81'
+        env_file:
+            - './apps/graphql/.env'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+
+    nginx:
+        build:
+            context: ./docker/nginx
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+                PHP_UPSTREAM_CONTAINER: php-fpm
+                PHP_UPSTREAM_PORT: 9000
+        env_file:
+            - './docker/nginx/.env'
+        ports:
+            - "8250:80"
+            - "8251:81"
+            - "8243:443"
+        volumes:
+            - ./docker/nginx/ssl:/etc/nginx/ssl
+            - ./docker/nginx/sites:/etc/nginx/sites
+        networks:
+            - sail
+    php-fpm:
+        image: php:8.3-fpm
+        build:
+            context: ./docker/php-fpm
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: 1000
+                LARADOCK_PHP_VERSION: 8.3
+                PHP_VERSION: 8.3
+        env_file:
+            - './docker/php-fpm/.env'
+        expose:
+            - '9000'
+        volumes:
+            - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
+        networks:
+            - sail
+
     pgsql:
         image: 'postgres:15'
         ports:
@@ -40,16 +103,11 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - pg_isready
-                - '-q'
-                - '-d'
-                - '${DB_DATABASE}'
-                - '-U'
-                - '${DB_USERNAME}'
-            retries: 3
+            test: ["CMD-SHELL", "pg_isready -q -d ${DB_DATABASE} -U ${DB_USERNAME}"]
+            interval: 10s
             timeout: 5s
+            retries: 3
+            start_period: 10s
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
@@ -66,12 +124,22 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - redis-cli
-                - ping
-            retries: 3
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 10s
             timeout: 5s
+            retries: 3
+            start_period: 10s
+    grafana:
+        image: sail-8.3/grafana
+        build:
+            context: ./docker/grafana
+            dockerfile: Dockerfile
+        ports:
+            - '${FORWARD_GRAFANA_PORT:-3000}:3000'
+        env_file:
+            - ./docker/grafana/.env
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
