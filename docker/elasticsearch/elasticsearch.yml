@@ -1,0 +1,11 @@
+cluster.name: "microservices-cluster"
+node.name: "node-1"
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+discovery.seed_hosts: ["host1", "host2"]
+cluster.initial_master_nodes: ["node-1", "node-2"]
+# Adjust thread pool sizes according to your use case and hardware
+thread_pool.write.queue_size: 1000
+thread_pool.search.queue_size: 2000
+indices.memory.index_buffer_size: 20%

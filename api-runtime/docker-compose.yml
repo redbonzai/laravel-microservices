@@ -2,7 +2,7 @@ version: '3.8'
 services:
     api-runtime:
         build:
-            context: ./docker/api-runtime
+            context: ../docker/api-runtime
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -29,7 +29,7 @@ services:
             - php-fpm
     graphql:
         build:
-            context: apps/graphql/docker
+            context: '../apps/graphql'
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -45,7 +45,7 @@ services:
         ports:
             - '${GRAPHQL_PORT:-81}:81'
         env_file:
-            - './apps/graphql/.env'
+            - '../apps/graphql/.env'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -53,34 +53,34 @@ services:
 
     nginx:
         build:
-            context: ./docker/nginx
+            context: ../docker/nginx
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
                 PHP_UPSTREAM_CONTAINER: php-fpm
                 PHP_UPSTREAM_PORT: 9000
         env_file:
-            - './docker/nginx/.env'
+            - '../docker/nginx/.env'
         ports:
             - "8250:80"
             - "8251:81"
             - "8243:443"
         volumes:
-            - ./docker/nginx/ssl:/etc/nginx/ssl
-            - ./docker/nginx/sites:/etc/nginx/sites
+            - ../docker/nginx/ssl:/etc/nginx/ssl
+            - ../docker/nginx/sites:/etc/nginx/sites
         networks:
             - sail
     php-fpm:
         image: php:8.3-fpm
         build:
-            context: ./docker/php-fpm
+            context: ../docker/php-fpm
             dockerfile: Dockerfile
             args:
                 WWWGROUP: 1000
                 LARADOCK_PHP_VERSION: 8.3
                 PHP_VERSION: 8.3
         env_file:
-            - './docker/php-fpm/.env'
+            - '../docker/php-fpm/.env'
         expose:
             - '9000'
         volumes:
@@ -132,12 +132,12 @@ services:
     grafana:
         image: sail-8.3/grafana
         build:
-            context: ./docker/grafana
+            context: ../docker/grafana
             dockerfile: Dockerfile
         ports:
             - '${FORWARD_GRAFANA_PORT:-3000}:3000'
         env_file:
-            - ./docker/grafana/.env
+            - ../docker/grafana/.env
         networks:
             - sail
 networks:

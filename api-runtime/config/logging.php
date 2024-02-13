@@ -126,6 +126,28 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'cloudwatch' => [
+            'driver' => 'monolog',
+            'handler' => \Maxbanton\Cwh\Handler\CloudWatch::class,
+            'with' => [
+                'sdkParams' => [
+                    'region' => 'your-aws-region',
+                    'version' => 'latest',
+                    'credentials' => [
+                        'key' => 'your-aws-access-key-id',
+                        'secret' => 'your-aws-secret-access-key',
+                        // Include 'token' if using temporary credentials
+                    ],
+                    // Optionally add 'endpoint' if you need to override the AWS service endpoint.
+                ],
+                'streamName' => 'your-log-stream',
+                'groupName' => 'your-log-group',
+                'retentionDays' => 14, // Optional: Specifies the log retention policy
+                // 'batchSize' => 10000, // Optional: Max size of log batch. Defaults to 10000
+            ],
+            'formatter' => App\Logging\CustomJsonFormatter::class, // Optional: Custom formatter
+            // 'formatter_with' => [], // Optional: Additional parameters for the formatter
+        ],
     ],
 
 ];
