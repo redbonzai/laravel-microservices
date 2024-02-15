@@ -1,0 +1,23 @@
+{
+    "name": "redbonzai/cloudwatch-logger",
+    "description": "push logs to cloudwatch",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Dominguez",
+            "email": "christian@redbonzai.com"
+        }
+    ],
+    "require": {
+        "maxbanton/cwh": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Redbonzai\\Logging\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

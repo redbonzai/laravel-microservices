@@ -1,0 +1,116 @@
+CompileCommand: exclude com/intellij/openapi/vfs/impl/FilePartNodeRoot.trieDescend bool exclude = true
+2024-02-14 12:04:15,173 [     52]   WARN - #c.i.i.p.PluginManager - <resource-bundle>messages.DataGripBundle</resource-bundle> tag is found in an xml descriptor included into the platform part of the IDE but the platform part uses predefined bundles (e.g. ActionsBundle for actions) anyway; this tag must be replaced by a corresponding attribute in some inner tags (e.g. by 'resource-bundle' attribute in 'actions' tag)
+2024-02-14 12:04:15,752 [    631]   WARN - #c.i.s.ComponentManagerImpl - `preload=true` must be used only for core services (service=com.intellij.ae.database.core.baseEvents.fus.AddStatisticsEventLogListenerTemporary, plugin=com.jetbrains.ae.database)
+2024-02-14 12:04:16,009 [    888]   WARN - #c.i.s.ComponentManagerImpl - com.intellij.psi.search.FilenameIndex initializer requests com.intellij.ide.plugins.PluginUtil instance
+2024-02-14 12:04:16,174 [   1053] SEVERE - #c.i.o.e.c.i.EditorColorsManagerImpl - id is not specified for extension /colors/Atom One Dark
+java.lang.Throwable: id is not specified for extension /colors/Atom One Dark
+	at com.intellij.openapi.diagnostic.Logger.error(Logger.java:376)
+	at com.intellij.openapi.editor.colors.impl.EditorColorsManagerImplKt$createLoadBundledSchemeRequests$1$1.getSchemeKey(EditorColorsManagerImpl.kt:733)
+	at com.intellij.configurationStore.schemeManager.SchemeManagerImpl.loadBundledSchemes(SchemeManagerImpl.kt:128)
+	at com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl.<init>(EditorColorsManagerImpl.kt:103)
+	at com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl.<init>(EditorColorsManagerImpl.kt:90)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt$instantiate$4.invoke(instantiate.kt:74)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt$instantiate$4.invoke(instantiate.kt:72)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt.instantiate(instantiate.kt:278)
+	at com.intellij.platform.instanceContainer.instantiation.InstantiateKt.instantiate(instantiate.kt:72)
+	at com.intellij.serviceContainer.InstantiateKt.instantiateWithContainer(instantiate.kt:19)
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance$suspendImpl(ServiceInstanceInitializer.kt:26)
+	at com.intellij.serviceContainer.ServiceInstanceInitializer.createInstance(ServiceInstanceInitializer.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invokeSuspend(LazyInstanceHolder.kt:162)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invoke(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1$1.invoke(LazyInstanceHolder.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invokeSuspend(LazyInstanceHolder.kt:160)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invoke(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder$initialize$1.invoke(LazyInstanceHolder.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startCoroutineUndispatched(Undispatched.kt:44)
+	at kotlinx.coroutines.CoroutineStart.invoke(CoroutineStart.kt:112)
+	at kotlinx.coroutines.AbstractCoroutine.start(AbstractCoroutine.kt:126)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.launch(Builders.common.kt:56)
+	at kotlinx.coroutines.BuildersKt.launch(Unknown Source)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.initialize(LazyInstanceHolder.kt:145)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.access$initialize(LazyInstanceHolder.kt:13)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.tryInitialize(LazyInstanceHolder.kt:135)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance(LazyInstanceHolder.kt:95)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance$suspendImpl(LazyInstanceHolder.kt:83)
+	at com.intellij.platform.instanceContainer.internal.LazyInstanceHolder.getInstance(LazyInstanceHolder.kt)
+	at com.intellij.platform.instanceContainer.internal.InstanceContainerImpl.instance(InstanceContainerImpl.kt:67)
+	at com.intellij.serviceContainer.ComponentManagerImpl.getServiceAsync(ComponentManagerImpl.kt:993)
+	at com.intellij.ide.ui.html.GlobalStyleSheetHolderKt$initGlobalStyleSheet$2$1.invokeSuspend(GlobalStyleSheetHolder.kt:129)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-02-14 12:04:16,201 [   1080] SEVERE - #c.i.o.e.c.i.EditorColorsManagerImpl - DataGrip 2023.3.4  Build #DB-233.14015.137
+2024-02-14 12:04:16,202 [   1081] SEVERE - #c.i.o.e.c.i.EditorColorsManagerImpl - JDK: 17.0.9; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-02-14 12:04:16,202 [   1081] SEVERE - #c.i.o.e.c.i.EditorColorsManagerImpl - OS: Linux
+2024-02-14 12:04:16,203 [   1082] SEVERE - #c.i.o.e.c.i.EditorColorsManagerImpl - Last Action: 
+2024-02-14 12:04:16,251 [   1130]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=f92a0fa7-1a98-47cd-b5cb-78ff67e6f4f3)
+2024-02-14 12:04:16,261 [   1140]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=1a92aa6f-c2f1-4994-ae01-6a78e43eeb24)
+2024-02-14 12:04:16,269 [   1148]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=4b6007f7-b596-4ee2-96f9-968d3d3eb392)
+2024-02-14 12:04:16,277 [   1156]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=4f556d32-83cb-4b8b-9932-c4eccc4ce3af)
+2024-02-14 12:04:16,296 [   1175]   WARN - #c.i.o.e.c.i.EditorColorsManagerImpl - Skipping '_@user_One dark by Mayke' because its parent scheme 'One dark by Mayke' is missing.
+2024-02-14 12:04:16,745 [   1624]   WARN - #c.i.s.ComponentManagerImpl - com.intellij.psi.LanguageSubstitutors initializer requests com.intellij.psi.LanguageSubstitutors instance
+2024-02-14 12:04:17,053 [   1932] SEVERE - #c.i.o.f.i.FileEditorManagerImpl - Unexpected termination offset for lexer org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor@1c2c1c00
+java.lang.IllegalStateException: Unexpected termination offset for lexer org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor@1c2c1c00
+	at com.intellij.openapi.editor.ex.util.LexerEditorHighlighter.doSetText(LexerEditorHighlighter.java:451)
+	at com.intellij.openapi.editor.ex.util.LexerEditorHighlighter.setText(LexerEditorHighlighter.java:410)
+	at com.intellij.openapi.fileEditor.impl.text.PsiAwareTextEditorProvider$createEditorBuilder$2$highlighterDeferred$1$1.invoke(PsiAwareTextEditorProvider.kt:74)
+	at com.intellij.openapi.fileEditor.impl.text.PsiAwareTextEditorProvider$createEditorBuilder$2$highlighterDeferred$1$1.invoke(PsiAwareTextEditorProvider.kt:70)
+	at com.intellij.openapi.application.rw.InternalReadAction.insideReadAction(InternalReadAction.kt:108)
+	at com.intellij.openapi.application.rw.InternalReadAction.access$insideReadAction(InternalReadAction.kt:16)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadBlocking$2.invoke$lambda$0(InternalReadAction.kt:86)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1075)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadBlocking$2.invoke(InternalReadAction.kt:85)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadBlocking$2.invoke(InternalReadAction.kt:83)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:321)
+	at com.intellij.openapi.progress.CoroutinesKt.access$blockingContextInner(coroutines.kt:1)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:198)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:264)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:197)
+	at com.intellij.openapi.application.rw.InternalReadAction.tryReadBlocking(InternalReadAction.kt:83)
+	at com.intellij.openapi.application.rw.InternalReadAction.tryReadAction(InternalReadAction.kt:75)
+	at com.intellij.openapi.application.rw.InternalReadAction.readLoop(InternalReadAction.kt:65)
+	at com.intellij.openapi.application.rw.InternalReadAction.access$readLoop(InternalReadAction.kt:16)
+	at com.intellij.openapi.application.rw.InternalReadAction$runReadAction$4.invokeSuspend(InternalReadAction.kt:44)
+	at com.intellij.openapi.application.rw.InternalReadAction$runReadAction$4.invoke(InternalReadAction.kt)
+	at com.intellij.openapi.application.rw.InternalReadAction$runReadAction$4.invoke(InternalReadAction.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:78)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:167)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.openapi.application.rw.InternalReadAction.runReadAction(InternalReadAction.kt:40)
+	at com.intellij.openapi.application.rw.PlatformReadWriteActionSupport.executeReadAction(PlatformReadWriteActionSupport.kt:38)
+	at com.intellij.openapi.application.ReadWriteActionSupport.executeReadAction$default(ReadWriteActionSupport.kt:15)
+	at com.intellij.openapi.application.CoroutinesKt.constrainedReadActionBlocking(coroutines.kt:124)
+	at com.intellij.openapi.application.CoroutinesKt.readActionBlocking(coroutines.kt:93)
+	at com.intellij.openapi.fileEditor.impl.text.PsiAwareTextEditorProvider$createEditorBuilder$2$highlighterDeferred$1.invokeSuspend(PsiAwareTextEditorProvider.kt:70)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+2024-02-14 12:04:17,054 [   1933] SEVERE - #c.i.o.f.i.FileEditorManagerImpl - DataGrip 2023.3.4  Build #DB-233.14015.137
+2024-02-14 12:04:17,054 [   1933] SEVERE - #c.i.o.f.i.FileEditorManagerImpl - JDK: 17.0.9; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-02-14 12:04:17,055 [   1934] SEVERE - #c.i.o.f.i.FileEditorManagerImpl - OS: Linux
+2024-02-14 12:04:17,055 [   1934] SEVERE - #c.i.o.f.i.FileEditorManagerImpl - Last Action: 
+2024-02-14 12:04:17,277 [   2156]   WARN - #c.i.o.v.n.p.d.e.DurableEnumeratorFactory - [enumerator.mmapped]: .valueToId map is out-of-sync with .valuesLog data -> rebuilding it
+2024-02-14 12:04:17,641 [   2520]   WARN - #c.i.s.ComponentManagerImpl - com.intellij.openapi.vcs.changes.conflicts.ChangelistConflictFileStatusProvider initializer requests com.intellij.openapi.vcs.FileStatusFactory instance
+2024-02-14 12:04:17,721 [   2600]   WARN - #o.j.p.t.TextMateService - Cannot find referenced file `./language-configuration.json` in bundle `/home/christiandominguez/.local/share/JetBrains/Toolbox/apps/datagrip/plugins/textmate/lib/bundles/mdx`
+2024-02-14 12:04:18,580 [   3459]   WARN - #c.i.o.a.i.ActionUpdater - 655 ms to grab EDT for ToolWindowHeader$2#Update@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2)
+2024-02-14 12:04:18,581 [   3460]   WARN - #c.i.o.a.i.ActionUpdater - 563 ms to grab EDT for ToolWindowHeader$2#Update@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2)
+2024-02-14 12:04:18,830 [   3709]   WARN - #c.i.s.ComponentManagerImpl - com.intellij.database.console.session.DatabaseSessionManager initializer requests com.intellij.database.console.session.DatabaseSessionViewService instance
+2024-02-14 12:04:20,270 [   5149]   WARN - #c.i.s.ComponentManagerImpl - com.intellij.execution.runners.ExecutionUtil initializer requests com.intellij.notification.NotificationGroupManager instance
+2024-02-14 12:30:31,161 [1576040]   WARN - #c.i.u.x.Binding - no accessors for com.database.u.Version
