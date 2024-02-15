@@ -9,56 +9,42 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "*",
+        "guzzlehttp/promises": "*",
         "laravel/framework": "^10.10",
+        "laravel/pint": "^1.13",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "league/commonmark": "*",
         "maxbanton/cwh": "^2.0",
-        "redbonzai/cloudwatch-logger": "*"
+        "redbonzai/cloudwatch-logger": "1.0.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.49",
-        "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
+        "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0",
         "squizlabs/php_codesniffer": "^3.8"
     },
     "repositories": [
         {
             "type": "path",
-            "url": "../libs/cloudwatch-logger",
+            "url": "../packages/redbonzai/cloudwatch-logger",
+            "version": "1.0.0",
             "options": {
                 "symlink": true
             }
         }
     ],
-    "packages": [
-        {
-            "name": "redbonzai/cloudwatch-logger",
-            "description": "A Laravel package for logging to AWS CloudWatch with custom formatting.",
-            "type": "library",
-            "version": "^1.0",
-            "require": {
-                "php": "^7.2|^8.0",
-                "maxbanton/cwh": "^2.0"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Redbonzai\\Logging\\": "src/Logging/"
-                }
-            }
-        }
-    ],
     "autoload": {
         "psr-4": {
-            "App\\": "./app/",
-            "Database\\Factories\\": "./database/factories/",
-            "Database\\Seeders\\": "./database/seeders/",
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
             "Libs\\": "../libs/"
         }
     },
@@ -96,6 +82,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
